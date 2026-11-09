@@ -26,3 +26,59 @@ document.getElementById("studyForm").addEventListener("submit", event => {
   document.getElementById("result").textContent =
     "Ton sujet est prêt ! Le moteur IA sera connecté prochainement.";
 });
+let currentSlide = 0;
+let isPlaying = false;
+
+const slides = [
+  {
+    title: "Bienvenue dans ton cours !",
+    text: "Prépare-toi à apprendre avec STUDY 🪷"
+  },
+  {
+    title: "Première explication",
+    text: "Ici apparaîtra le contenu de ton cours."
+  },
+  {
+    title: "À retenir",
+    text: "Les informations essentielles seront affichées ici."
+  }
+];
+
+function showSlide() {
+  document.getElementById("slide-title").textContent =
+    slides[currentSlide].title;
+
+  document.getElementById("slide-text").textContent =
+    slides[currentSlide].text;
+
+  document.getElementById("progress-bar").style.width =
+    ((currentSlide + 1) / slides.length * 100) + "%";
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide();
+}
+
+function previousSlide() {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  showSlide();
+}
+
+function togglePlay() {
+  isPlaying = !isPlaying;
+  document.getElementById("play-button").textContent =
+    isPlaying ? "⏸" : "▶️";
+}
+
+function toggleFullscreen() {
+  const player = document.querySelector(".video-player");
+
+  if (!document.fullscreenElement) {
+    player.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+}
+
+showSlide();
