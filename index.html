@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STUDY - Apprendre autrement</title>
+<style>
+:root {
+  --cream:#F4EFE6;
+  --pink:#DDBFC5;
+  --sage:#89947A;
+  --dark:#343A32;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  background:var(--cream);
+  color:var(--dark);
+  font-family:Arial,sans-serif;
+}
+.sidebar {
+  position:fixed;
+  left:0;top:0;bottom:0;
+  width:220px;
+  padding:30px 20px;
+  background:#FBF8F1;
+  border-right:1px solid #e8dfd4;
+}
+.logo {
+  font:26px Georgia,serif;
+  letter-spacing:3px;
+  margin-bottom:55px;
+}
+.lotus { color:#C58F9B; }
+nav a {
+  display:block;
+  padding:14px;
+  margin-bottom:10px;
+  color:#74776c;
+  text-decoration:none;
+  border-radius:12px;
+}
+nav a:first-child {
+  background:#eee3e2;
+  color:#72545a;
+}
+main {
+  margin-left:220px;
+  padding:45px;
+  max-width:1200px;
+}
+h1,h2 { font-family:Georgia,serif; }
+header p { color:#77796f; }
+.hero {
+  background:#e8e9df;
+  padding:30px;
+  border-radius:22px;
+  margin:30px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.hero h2 { font-size:36px; }
+.hero em { color:#a76f7b; }
+.flower { font-size:90px;color:#c58f9b; }
+.creator {
+  background:#fffdf9;
+  padding:30px;
+  border-radius:20px;
+}
+.fields {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+label {
+  display:grid;
+  gap:8px;
+  font-size:13px;
+  margin-bottom:18px;
+}
+select,textarea {
+  padding:13px;
+  border:1px solid #e7e1d8;
+  border-radius:10px;
+  background:white;
+}
+textarea { width:100%; }
+button {
+  padding:14px 22px;
+  border:0;
+  border-radius:10px;
+  background:var(--sage);
+  color:white;
+  cursor:pointer;
+}
+#result { color:#74776c;font-size:13px; }
+@media(max-width:650px) {
+  .sidebar { width:65px;padding:15px 5px; }
+  .logo { font-size:0; }
+  .logo .lotus { font-size:24px; }
+  nav a { font-size:0;padding:14px 5px; }
+  main { margin-left:65px;padding:20px 14px; }
+  .fields { grid-template-columns:1fr; }
+  .hero h2 { font-size:25px; }
+}
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="logo"><span class="lotus">✿</span> STUDY</div>
+  <nav>
+    <a href="#">⌂ Accueil</a>
+    <a href="#">▤ Mes vidéos</a>
+    <a href="#">♡ Favoris</a>
+    <a href="#">▧ Mon espace</a>
+    <a href="#">⚙ Paramètres</a>
+  </nav>
+</aside>
+
+<main>
+<header>
+  <p>APPRENDRE À TON RYTHME</p>
+  <h1>Bienvenue sur STUDY <span class="lotus">✧</span></h1>
+  <p>Transforme tes cours en vidéos simples et agréables à regarder.</p>
+</header>
+
+<section class="hero">
+  <div>
+    <p>TON ESPACE D'APPRENTISSAGE</p>
+    <h2>Comprendre devient<br><em>plus simple.</em></h2>
+    <p>Un sujet, une explication adaptée à ton niveau.</p>
+  </div>
+  <div class="flower">❀</div>
+</section>
+
+<section class="creator">
+  <h2>Créer une vidéo de cours</h2>
+  <form id="studyForm">
+    <div class="fields">
+      <label>Niveau
+        <select id="level" required>
+          <option value="">Choisir un niveau</option>
+          <option>École maternelle</option>
+          <option>École primaire</option>
+          <option>Collège</option>
+          <option>Lycée</option>
+          <option>Études supérieures</option>
+        </select>
+      </label>
+
+      <label>Classe
+        <select id="class" required>
+          <option value="">Choisir d'abord un niveau</option>
+        </select>
+      </label>
+
+      <label>Matière
+        <select required>
+          <option value="">Choisir une matière</option>
+          <option>Français</option>
+          <option>Mathématiques</option>
+          <option>Histoire-géographie</option>
+          <option>Sciences</option>
+          <option>Langues</option>
+          <option>Autre</option>
+        </select>
+      </label>
+
+      <label>Durée
+        <select>
+          <option>3 minutes</option>
+          <option selected>5 minutes</option>
+          <option>10 minutes</option>
+          <option>15 minutes</option>
+        </select>
+      </label>
+    </div>
+
+    <label>Quel sujet veux-tu apprendre ?
+      <textarea rows="4" required placeholder="Ex : La photosynthèse..."></textarea>
+    </label>
+
+    <button type="submit">Préparer ma vidéo →</button>
+    <p id="result">L'intelligence artificielle sera bientôt connectée.</p>
+  </form>
+</section>
+</main>
+
+<script>
+const classes = {
+  "École maternelle":["Petite section","Moyenne section","Grande section"],
+  "École primaire":["CP","CE1","CE2","CM1","CM2"],
+  "Collège":["6e","5e","4e","3e"],
+  "Lycée":["Seconde","Première","Terminale"],
+  "Études supérieures":["BTS / BUT","Licence","Master","Doctorat"]
+};
+
+const level = document.getElementById("level");
+const classSelect = document.getElementById("class");
+
+level.addEventListener("change",()=>{
+  classSelect.innerHTML='<option value="">Choisir une classe</option>';
+  (classes[level.value]||[]).forEach(name=>{
+    const option=document.createElement("option");
+    option.value=name;
+    option.textContent=name;
+    classSelect.appendChild(option);
+  });
+});
+
+document.getElementById("studyForm").addEventListener("submit",event=>{
+  event.preventDefault();
+  document.getElementById("result").textContent=
+    "Ton sujet est prêt ! Le moteur IA sera connecté prochainement.";
+});
+</script>
+</body>
+</html>
