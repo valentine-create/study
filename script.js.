@@ -1,0 +1,28 @@
+const classes = {
+  "École maternelle": ["Petite section", "Moyenne section", "Grande section"],
+  "École primaire": ["CP", "CE1", "CE2", "CM1", "CM2"],
+  "Collège": ["6e", "5e", "4e", "3e"],
+  "Lycée": ["Seconde", "Première", "Terminale"],
+  "Études supérieures": ["BTS / BUT", "Licence", "Master", "Doctorat"]
+};
+
+const level = document.getElementById("level");
+const classSelect = document.getElementById("class");
+
+level.addEventListener("change", () => {
+  classSelect.innerHTML = '<option value="">Choisir une classe</option>';
+
+  (classes[level.value] || []).forEach(name => {
+    const option = document.createElement("option");
+    option.value = name;
+    option.textContent = name;
+    classSelect.appendChild(option);
+  });
+});
+
+document.getElementById("studyForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  document.getElementById("result").textContent =
+    "Ton sujet est prêt ! Le moteur IA sera connecté prochainement.";
+});
