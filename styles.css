@@ -162,3 +162,41 @@ button {
     font-size: 25px;
   }
 }
+.video-section {
+  margin-top: 45px;
+  text-align: center;
+}
+
+.video-player {
+  width: 100%;
+  max-width: 800px;
+  aspect-ratio: 16 / 9;
+  margin: 20px auto;
+  background: linear-gradient(135deg, #f4e6e8, #e7eadf);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 20px #00000010;
+}
+
+.video-content {
+  text-align: center;
+  padding: 20px;
+  color: #343a32;
+}
+
+.video-content span {
+  color: #bd8d99;
+  letter-spacing: 3px;
+}
+
+.video-content h2 {
+  font-size: 24px;
+  margin: 15px 0;
+}
+
+.video-caption {
+  color: #89947a;
+  font-size: 13px;
+}
