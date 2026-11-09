@@ -82,3 +82,68 @@ function toggleFullscreen() {
 }
 
 showSlide();
+let currentSlide = 0;
+let isPlaying = false;
+
+const slides = [
+  {
+    title: "Bienvenue dans ton cours !",
+    text: "Prépare-toi à apprendre avec STUDY 🪷"
+  },
+  {
+    title: "Première explication",
+    text: "Ici apparaîtra le contenu de ton cours."
+  },
+  {
+    title: "À retenir",
+    text: "Les informations essentielles seront affichées ici."
+  }
+];
+
+function showSlide() {
+  document.getElementById("slide-title").textContent =
+    slides[currentSlide].title;
+
+  document.getElementById("slide-text").textContent =
+    slides[currentSlide].text;
+
+  document.getElementById("progress-bar").style.width =
+    ((currentSlide + 1) / slides.length * 100) + "%";
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide();
+.video-controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 15px auto;
+}
+
+.video-controls button {
+  background: #ddbfc5;
+  color: #343a32;
+  border: none;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.progress-container {
+  max-width: 800px;
+  height: 6px;
+  background: #e8dfdc;
+  border-radius: 10px;
+  margin: 15px auto;
+  overflow: hidden;
+}
+
+#progress-bar {
+  width: 33.33%;
+  height: 100%;
+  background: #89947a;
+  transition: width 0.3s;
+}
